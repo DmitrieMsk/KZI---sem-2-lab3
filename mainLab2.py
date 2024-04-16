@@ -99,7 +99,7 @@ newBitArray = []
 newByteArray = []
 for i in range(0, len(strArrayBit), 8):
     newBitArray.append(strArrayBit[i:i+8])
-
+print('третье преобразование строки битов')
 print('bitArray = ', newBitArray)
 
 for i in range(0, len(newBitArray)):
@@ -172,15 +172,27 @@ def encrypt_file(file):  # метод шифрования
     print('00000000 file code = ',file_code)
     print("00000000 strShText = ", shtext)
     print('тип шифротекста = ', type(shtext))
+
+    shtextBitArrayBlock = []
+    shtextByteArray = []
+    for i in range(0, len(shtext), 8):
+        shtextBitArrayBlock.append(shtext[i:i+8])
+    print('Block bit sh text = ', shtextBitArrayBlock)
+
+    for i in range(0, len(shtextBitArrayBlock)):
+        shtextByteArray.append(int(shtextBitArrayBlock[i],2))
+    print('БАЙТЫ ШИФРОТЕКСТА', shtextByteArray)
+
+
     
     #шифрование файла
     
 
     
-    #with open(file, 'wb') as f:
-        #f.write(shtext)  # запись масива в файл
+    with open(file, 'wb') as f:
+        f.write(bytes(shtextByteArray))  # запись масива в файл
 
-    #print(f"Файл {file} зашифрован.")
+    print(f"Файл {file} зашифрован.")
 
 
 encrypt_file(file)
