@@ -120,6 +120,11 @@ print('nechet = ', nechet)
 i = 0
 #тут начинается шифр гаммирования (lab 3)
 file = "text.txt"
+file1 = "1.txt"
+file2 = "lab3.odt"
+
+file3 = "lab3.pdf"
+file4 = "1.png"
 
 def encrypt_file(file):  # метод шифрования
     with open(file, 'rb') as f:
@@ -129,8 +134,10 @@ def encrypt_file(file):  # метод шифрования
     i = 0
     
     newGammaForFileCode = []# отрезаю часть гаммы по длине сообщения
-
+    print ('i= ', i)
+    print("my gamma TEST == ", myGamma)
     while i < len(file_code):
+        print('str 137: i = ', i)
         newGammaForFileCode.append(myGamma[i])
         
         i = i + 1
@@ -155,9 +162,13 @@ def encrypt_file(file):  # метод шифрования
     shtext = []
     i =0
     while (i<len(file_code)):
+        print("check LOGIC RES = ", (file_code[i] == newGammaForFileCode[i]))
         if (file_code[i] == newGammaForFileCode[i]):
+            
+            print("i = ", i)
             shtext.append(0)
         else:
+            print("i = ", i)
             shtext.append(1)
         i= i + 1
 
@@ -195,6 +206,6 @@ def encrypt_file(file):  # метод шифрования
     print(f"Файл {file} зашифрован.")
 
 
-encrypt_file(file)
+encrypt_file(file2)
 
 
