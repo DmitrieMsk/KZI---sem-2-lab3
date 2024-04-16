@@ -128,7 +128,7 @@ def encrypt_file(file):  # метод шифрования
         i = i + 1
     print("newGammaForFileCode= ", newGammaForFileCode)
     print('')
-    print('file code = ',file_code)
+    print('00000000 file code = ',file_code)
     newGammaForFileCode = str(newGammaForFileCode)
 
     newGammaForFileCode = newGammaForFileCode.replace(',', '')
@@ -136,12 +136,25 @@ def encrypt_file(file):  # метод шифрования
     newGammaForFileCode = newGammaForFileCode.replace(']', '')
     newGammaForFileCode = newGammaForFileCode.replace(' ', '')
 
-    print ("длина отрезанной гаммы = ", len(newGammaForFileCode))
-    print ("длина файла с сообщением = ", len(file_code))
+    
     
     print("newGammaForFileCode= ", newGammaForFileCode)
 
-    
+    print ("длина отрезанной гаммы = ", len(newGammaForFileCode))
+    print ("длина файла с сообщением = ", len(file_code))
+
+    #ксорим получаем шифр текст
+    shtext = []
+    i =0
+    while (i<len(file_code)):
+        if (file_code[i] == newGammaForFileCode[i]):
+            shtext.append("0")
+        else:
+            shtext.append("1")
+        i= i + 1
+
+    print("shtext = ", shtext)
+    #преобразуем шифрт текст в строку без лишних символов
 
 encrypt_file(file)
 
