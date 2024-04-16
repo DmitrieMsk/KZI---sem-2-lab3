@@ -112,8 +112,17 @@ i = 0
 #тут начинается шифр гаммирования (lab 3)
 file = "text.txt"
 
+def encrypt_file(file):  # метод шифрования
+    with open(file, 'rb') as f:
+        file_code = f.read()  # чтение файла побитово
 
+    file_code = "".join(format(c, '08b') for c in file_code)  # перевод десятичных значений в двоичные, где один символ кодируется 8-ю битами
+    i = 0
+    print("gamma for file_code = ", end = "")
+    while i < len(file_code):
+        print(myGamma[i], end = "")
+        i = i + 1
 
-
+encrypt_file(file)
 
 
