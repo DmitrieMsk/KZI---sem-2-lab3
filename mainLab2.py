@@ -118,10 +118,30 @@ def encrypt_file(file):  # метод шифрования
 
     file_code = "".join(format(c, '08b') for c in file_code)  # перевод десятичных значений в двоичные, где один символ кодируется 8-ю битами
     i = 0
-    print("gamma for file_code = ", end = "")
+    
+    newGammaForFileCode = []# отрезаю часть гаммы по длине сообщения
+
     while i < len(file_code):
-        print(myGamma[i], end = "")
+        newGammaForFileCode.append(myGamma[i])
+        
+       
         i = i + 1
+    print("newGammaForFileCode= ", newGammaForFileCode)
+    print('')
+    print('file code = ',file_code)
+    newGammaForFileCode = str(newGammaForFileCode)
+
+    newGammaForFileCode = newGammaForFileCode.replace(',', '')
+    newGammaForFileCode = newGammaForFileCode.replace('[', '')
+    newGammaForFileCode = newGammaForFileCode.replace(']', '')
+    newGammaForFileCode = newGammaForFileCode.replace(' ', '')
+
+    print ("длина отрезанной гаммы = ", len(newGammaForFileCode))
+    print ("длина файла с сообщением = ", len(file_code))
+    
+    print("newGammaForFileCode= ", newGammaForFileCode)
+
+    
 
 encrypt_file(file)
 
