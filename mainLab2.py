@@ -74,10 +74,14 @@ print('period = ', period)
 print('iterator = ', iterator)
 print('end register',register)
 print('end gamma = ', myGamma)
+print('тип начальной гаммы = ', type(myGamma))
+print('начинаю преобразовыввать гамму')
     
-array_bit = []
+array_bit = [] 
 for i in range(0, len(myGamma), 8):
     array_bit.append(myGamma[i:i+8])
+
+print('после 1ого шага = ', array_bit)
 i = 0
 strArrayBit = str(array_bit)
 
@@ -85,6 +89,11 @@ strArrayBit = strArrayBit.replace(',', '')
 strArrayBit = strArrayBit.replace('[', '')
 strArrayBit = strArrayBit.replace(']', '')
 strArrayBit = strArrayBit.replace(' ', '')
+
+print('после перевода в стр и удаления символов')
+print('после 2 ого шага = ', strArrayBit)
+print('предположительно строка битов = ', type(strArrayBit))
+
 
 newBitArray = []
 newByteArray = []
@@ -124,7 +133,6 @@ def encrypt_file(file):  # метод шифрования
     while i < len(file_code):
         newGammaForFileCode.append(myGamma[i])
         
-       
         i = i + 1
     print("newGammaForFileCode= ", newGammaForFileCode)
     print('')
@@ -163,6 +171,17 @@ def encrypt_file(file):  # метод шифрования
     print("newGammaForFileCode= ", newGammaForFileCode)
     print('00000000 file code = ',file_code)
     print("00000000 strShText = ", shtext)
+    print('тип шифротекста = ', type(shtext))
+    
+    #шифрование файла
+    
+
+    
+    #with open(file, 'wb') as f:
+        #f.write(shtext)  # запись масива в файл
+
+    #print(f"Файл {file} зашифрован.")
+
 
 encrypt_file(file)
 
